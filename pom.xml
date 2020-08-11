@@ -5,7 +5,7 @@
     <groupId>com.capitalone.dashboard</groupId>
     <artifactId>hygieia-common</artifactId>
     <packaging>jar</packaging>
-    <version>4.0.1</version>
+    <version>4.0.2</version>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Core package shared by API layer and Microservices</description>
     <url>https://github.com/Hygieia/${project.artifactId}</url>
