@@ -31,7 +31,7 @@
         <joda-time.version>2.10.6</joda-time.version>
         <joda-convert.version>1.8.1</joda-convert.version>
         <jackson.version>2.10.3</jackson.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <pmd.version>3.6</pmd.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>4.12</junit.version>
