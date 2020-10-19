@@ -3,17 +3,18 @@ package com.capitalone.dashboard.model;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
-@Document(collection = "requests")
-public class RequestLog extends BaseModel {
+@Document(collection = "audit_requests")
+public class AuditRequestLog extends BaseModel {
 
     @Indexed
     private String apiUser;
     private String client;
     @Indexed
+    private String clientReference;
+    @Indexed
     private String endpoint;
     private String method;
-    private String parameter;
+    private Object parameter;
     private long requestSize;
     private String requestContentType;
     private Object requestBody;
@@ -23,6 +24,7 @@ public class RequestLog extends BaseModel {
     private int responseCode;
     private long timestamp;
     private long responseTime;
+
 
     public String getApiUser() { return apiUser; }
 
@@ -35,6 +37,10 @@ public class RequestLog extends BaseModel {
     public void setClient(String client) {
         this.client = client;
     }
+
+    public String getClientReference() { return clientReference; }
+
+    public void setClientReference(String clientReference) { this.clientReference = clientReference; }
 
     public String getEndpoint() {
         return endpoint;
@@ -52,11 +58,11 @@ public class RequestLog extends BaseModel {
         this.method = method;
     }
 
-    public String getParameter() {
+    public Object getParameter() {
         return parameter;
     }
 
-    public void setParameter(String parameter) {
+    public void setParameter(Object parameter) {
         this.parameter = parameter;
     }
 
@@ -129,6 +135,6 @@ public class RequestLog extends BaseModel {
     public void setResponseTime(long responseTime) { this.responseTime = responseTime; }
 
     public String toString() {
-        return "REST Request - " + "[" + this.method + "] [PARAMETERS:" + parameter + "] + [APIUSER:" + apiUser + "] [BODY:" + requestBody + "] [REMOTE:" + client + "] [STATUS:" + responseCode + "] [RESPONSE TIME:" + responseTime + "]";
+        return "REST Request - " + "[" + this.method + "] [PARAMETERS:" + parameter + "] [APIUSER:" + apiUser + "] [BODY:" + requestBody + "] [REMOTE:" + client + "] [clientReference:" + clientReference + "] [STATUS:" + responseCode + "] [RESPONSE TIME:" + responseTime + "]";
     }
 }

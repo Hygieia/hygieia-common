@@ -63,21 +63,20 @@ public abstract class CollectorTask<T extends Collector> implements Runnable {
         }
 
         if (collector.isEnabled()) {
-            // Do collection run
-			LOGGER.info("Starting Collector={}", collectorName);
+            LOGGER.info("Starting Collector={}", collectorName);
             long start = System.currentTimeMillis();
             if(CollectionUtils.isEmpty(getSelectedCollectorItems())) {
                 collect(collector);
             } else {
                 collect(collector, getSelectedCollectorItems());
             }
-			long count = collector.getLastExecutionRecordCount();
+            long count = collector.getLastExecutionRecordCount();
             long end = System.currentTimeMillis();
             long duration = end - start;
             LOGGER.info("Finished running Collector={} timeTaken=" + duration + " collectorItems=" + count, collectorName);
 
             // Update lastUpdate timestamp in Collector
-            collector.setLastExecuted(System.currentTimeMillis());
+            collector.setLastExecuted(end);
             getCollectorRepository().save(collector);
         } else {
             LOGGER.info("Collector is disabled, collectorName={}", collectorName);

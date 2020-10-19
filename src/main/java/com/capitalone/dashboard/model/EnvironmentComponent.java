@@ -16,15 +16,22 @@ public class EnvironmentComponent extends BaseModel {
     private String environmentName;
     private String environmentUrl;
     private String componentID;
-	private String componentName;
+    private String componentName;
     private String componentVersion;
+    private String componentPath;
     private String jobUrl;
     private boolean deployed;
     private long deployTime;
     private long asOfDate;
+    private ObjectId buildId;
+    private String jobStageName;
+    private String jobStageStatus;
+    private String applicationName;
+    private String serviceName;
+    private String changeReference;
 
 
-	
+
     public ObjectId getCollectorItemId() {
         return collectorItemId;
     }
@@ -32,13 +39,13 @@ public class EnvironmentComponent extends BaseModel {
     public void setCollectorItemId(ObjectId collectorItemId) {
         this.collectorItemId = collectorItemId;
     }
-    
+
     public String getEnvironmentID() {
-    	return environmentID;
+        return environmentID;
     }
-    
+
     public void setEnvironmentID(String environmentID) {
-    	this.environmentID = environmentID;
+        this.environmentID = environmentID;
     }
 
     public String getEnvironmentName() {
@@ -57,15 +64,15 @@ public class EnvironmentComponent extends BaseModel {
         this.environmentUrl = environmentUrl;
     }
 
-    
-    public String getComponentID() {
-		return componentID;
-	}
 
-	public void setComponentID(String componentID) {
-		this.componentID = componentID;
-	}
-	
+    public String getComponentID() {
+        return componentID;
+    }
+
+    public void setComponentID(String componentID) {
+        this.componentID = componentID;
+    }
+
     public String getComponentName() {
         return componentName;
     }
@@ -83,7 +90,7 @@ public class EnvironmentComponent extends BaseModel {
     }
 
     public String getJobUrl() {
-		return jobUrl;
+        return jobUrl;
     }
 
     public void setJobUrl(String jobUrl) {
@@ -113,4 +120,32 @@ public class EnvironmentComponent extends BaseModel {
     public void setDeployTime(long deployTime) {
         this.deployTime = deployTime;
     }
+
+    public ObjectId getBuildId() { return buildId; }
+
+    public void setBuildId(ObjectId buildId) { this.buildId = buildId; }
+
+    public String getJobStageName() { return jobStageName; }
+
+    public void setJobStageName(String jobStageName) { this.jobStageName = jobStageName; }
+
+    public String getJobStageStatus() { return jobStageStatus; }
+
+    public void setJobStageStatus(String jobStageStatus) { this.jobStageStatus = jobStageStatus; }
+
+    public String getComponentPath() { return componentPath; }
+
+    public void setComponentPath(String componentPath) { this.componentPath = componentPath; }
+
+    public String getApplicationName() { return applicationName; }
+
+    public void setApplicationName(String applicationName) { this.applicationName = applicationName; }
+
+    public String getServiceName() { return serviceName; }
+
+    public void setServiceName(String serviceName) { this.serviceName = serviceName; }
+
+    public String getChangeReference() { return changeReference; }
+
+    public void setChangeReference(String changeReference) { this.changeReference = changeReference; }
 }

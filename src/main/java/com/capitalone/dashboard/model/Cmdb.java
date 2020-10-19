@@ -2,6 +2,7 @@ package com.capitalone.dashboard.model;
 
 
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
@@ -17,8 +18,14 @@ public class Cmdb extends BaseModel{
     /**
      * configurationItem unique system generated id
      */
+    @Indexed
     @NotNull
     private String configurationItem;
+    /**
+     * configurationItem unique key name
+     */
+    @Indexed
+    private String configurationKey;
     /**
      * configurationItemSubType SubType of the CI
      */
@@ -27,6 +34,11 @@ public class Cmdb extends BaseModel{
      * configurationItemType Type of the CI
      */
     private String configurationItemType;
+    /**
+     * configurationItem legacy hpsm name
+     */
+    @Indexed
+    private String legacyServiceManagerName;
     private String assignmentGroup;
     /**
      * A owner assigned to the CI usually the id associated with the owner when provided
@@ -71,6 +83,7 @@ public class Cmdb extends BaseModel{
     /**
      * commonName Human readable value of the configurationItem
      */
+    @Indexed
     @NotNull
     private String commonName;
     /**
@@ -113,6 +126,14 @@ public class Cmdb extends BaseModel{
 
     public void setConfigurationItem(String configurationItem) {
         this.configurationItem = configurationItem;
+    }
+
+    public String getConfigurationKey() {
+        return configurationKey;
+    }
+
+    public void setConfigurationKey(String configurationKey) {
+        this.configurationKey = configurationKey;
     }
 
     public String getConfigurationItemSubType() {
@@ -256,11 +277,20 @@ public class Cmdb extends BaseModel{
         this.ownerSubDept = ownerSubDept;
     }
 
+    public String getLegacyServiceManagerName() {
+        return legacyServiceManagerName;
+    }
+
+    public void setLegacyServiceManagerName(String legacyServiceManagerName) {
+        this.legacyServiceManagerName = legacyServiceManagerName;
+    }
+
     @Override
     public int hashCode()
     {
         return Objects.hash(
                 this.configurationItem,
+                this.configurationKey,
                 this.assignmentGroup,
                 this.appServiceOwner,
                 this.businessOwner,
@@ -270,7 +300,9 @@ public class Cmdb extends BaseModel{
                 this.ownerSubDept,
                 this.itemType,
                 this.configurationItemSubType,
-                this.configurationItemType);
+                this.configurationItemType,
+                this.legacyServiceManagerName,
+                this.commonName);
     }
     @Override
     public boolean equals(Object obj)
@@ -285,6 +317,7 @@ public class Cmdb extends BaseModel{
         }
         final Cmdb other = (Cmdb) obj;
         return    Objects.equals(this.configurationItem, other.configurationItem)
+                && Objects.equals(this.configurationKey, other.configurationKey)
                 && Objects.equals(this.assignmentGroup, other.assignmentGroup)
                 && Objects.equals(this.appServiceOwner, other.appServiceOwner)
                 && Objects.equals(this.businessOwner, other.businessOwner)
@@ -293,9 +326,9 @@ public class Cmdb extends BaseModel{
                 && Objects.equals(this.ownerDept, other.ownerDept)
                 && Objects.equals(this.configurationItemSubType, other.configurationItemSubType)
                 && Objects.equals(this.configurationItemType, other.configurationItemType)
+                && Objects.equals(this.legacyServiceManagerName, other.legacyServiceManagerName)
                 && Objects.equals(this.validConfigItem, other.validConfigItem)
                 && Objects.equals(this.ownerSubDept, other.ownerSubDept)
                 && Objects.equals(this.commonName, other.commonName);
-
     }
 }

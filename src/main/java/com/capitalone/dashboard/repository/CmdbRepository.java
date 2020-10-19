@@ -19,6 +19,9 @@ public interface CmdbRepository extends QueryRepository<Cmdb>  {
 
     Page<Cmdb> findAllByItemTypeAndConfigurationItemContainingIgnoreCaseAndValidConfigItem(String itemType, String configurationItem, Pageable pageable, boolean valid);
 
+    List<Cmdb> findAllByConfigurationItemContainingOrConfigurationKeyContainingOrLegacyServiceManagerNameContainingOrCommonNameContainingAllIgnoreCase(
+            String configItemFilter, String configKeyFilter, String legacyNameFilter, String commonNameFilter);
+
     Cmdb findByConfigurationItemIgnoreCase(String configurationItem);
 
     List<Cmdb> findAllByItemType(String type);
