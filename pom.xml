@@ -37,7 +37,7 @@
         <junit.version>4.12</junit.version>
         <spring.version>5.2.9.RELEASE</spring.version>
         <spring.webmvc.version>5.2.7.RELEASE</spring.webmvc.version>
-        <spring.websecurity.version>4.2.15.RELEASE</spring.websecurity.version>
+        <spring.websecurity.version>5.2.10.RELEASE</spring.websecurity.version>
         <spring.cloud.version>2.2.1.RELEASE</spring.cloud.version>
         <querydsl.version>4.2.2</querydsl.version>
         <mongo>3.9.1</mongo>
